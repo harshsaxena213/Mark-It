@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add a New Bookmark</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Personal Bookmark Manager</h1>
+        <nav>
+            <a href="/bookmarks/">Bookmarks List</a> | 
+            <a href="/bookmarks/add">Add Bookmark</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Add a Bookmark</h2>
+        <form id="addBookmarkForm" method="POST" action="/bookmarks/add">
+            <div class="form-row">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required maxlength="200" />
+            </div>
+
+            <div class="form-row">
+                <label for="url">URL:</label>
+                <input type="url" id="url" name="url" required maxlength="500" />
+            </div>
+
+            <div class="form-row">
+                <label for="tag">Tag (optional):</label>
+                <input type="text" id="tag" name="tag" maxlength="50" />
+            </div>

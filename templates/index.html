@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>My Bookmarks</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Personal Bookmark Manager</h1>
+        <nav>
+            <a href="/bookmarks/">Bookmarks List</a> | 
+            <a href="/bookmarks/add">Add Bookmark</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Bookmark List</h2>
+        {{#bookmarks}}
+        <div class="bookmark-item">
+            <a href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a>
+            <span class="tag">[{{tag}}]</span>
+        </div>
+        {{/bookmarks}}
+
+        {{^bookmarks}}
+        <p>No bookmarks yet. Go add one!</p>
+        {{/bookmarks}}
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Personal Bookmark Manager</p>
+    </footer>
+</body>
+</html>
