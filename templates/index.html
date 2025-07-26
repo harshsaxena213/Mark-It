@@ -9,23 +9,23 @@
     <header>
         <h1>Personal Bookmark Manager</h1>
         <nav>
-            <a href="/bookmarks/">Bookmarks List</a> | 
+            <a href="/bookmarks">Bookmarks List</a> | 
             <a href="/bookmarks/add">Add Bookmark</a>
         </nav>
     </header>
 
     <main>
         <h2>Bookmark List</h2>
-        {{#bookmarks}}
+        {{#items}}
         <div class="bookmark-item">
             <a href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a>
             <span class="tag">[{{tag}}]</span>
         </div>
-        {{/bookmarks}}
+        {{/items}}
 
-        {{^bookmarks}}
+        {{^items}}
         <p>No bookmarks yet. Go add one!</p>
-        {{/bookmarks}}
+        {{/items}}
     </main>
     
     <footer>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>My Bookmarks</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 2em auto;
+            background: #f9f9f9;
+            padding: 1em 2em;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .bookmark-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .bookmark-list li {
+            padding: 0.5em 0.75em;
+            margin: 0.5em 0;
+            background: #fff;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.03);
+        }
+        .bookmark-list li a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: 600;
+            word-break: break-word;
+            max-width: 80%;
+        }
+        .bookmark-tag {
+            background-color: #eee;
+            color: #555;
+            padding: 0.2em 0.6em;
+            border-radius: 12px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 1.5em;
+        }
+        nav a {
+            text-decoration: none;
+            color: #007acc;
+            margin: 0 1em;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .empty-message {
+            text-align: center;
+            color: #888;
+            margin-top: 2em;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personal Bookmark Manager</h1>
+
+    <nav>
+        <!-- <a href="/bookmarks/">Bookmark List</a> | -->
+        <a href="/bookmarks/add">Add a Bookmark</a>
+    </nav>
+
+    
+    <ul class="bookmark-list">
+        {{#items}}
+        <li>
+            <a href="{{Url}}" target="_blank" rel="noopener noreferrer">{{Title}}</a>
+            <span class="bookmark-tag">{{Tag}}</span>
+        </li>
+        {{/items}}
+    </ul>
+
+
+    {{^items}}
+    <p class="empty-message">No bookmarks yet. Please add some!</p>
+    {{/items}}
+</body>
+</html>
