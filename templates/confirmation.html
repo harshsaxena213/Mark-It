@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bookmark Added</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Personal Bookmark Manager</h1>
+        <nav>
+            <a href="/bookmarks">Bookmarks List</a> | 
+            <a href="/add">Add Another Bookmark</a>|
+            <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Bookmark Added Successfully!</h2>
+        <p>Your bookmark has been added with the following details:</p>
+        <ul>
+            <li><strong>Title:</strong> {{name}}</li>
+            <li><strong>URL:</strong> <a href="{{url}}" target="_blank">{{url}}</a></li>
+            {{#tag}} <!-- will only render if tag is non-empty -->
+            <li><strong>Tag:</strong> {{tag}}</li>
+            {{/tag}}
+        </ul>
+
+        <p>
+            <a href="/bookmarks">Go to Bookmarks List</a><br/>
+            <a href="/add">Add Another Bookmark</a>
+            <a href="/">Home</a>
+        </p>
+    </main>
+</body>
+</html>

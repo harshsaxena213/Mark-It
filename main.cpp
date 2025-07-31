@@ -1,41 +1,39 @@
 #include <crow.h>
 #include <fstream>
 #include "./include/ load.h"
+#include "./include/add.h"
 
 int main()
 {
     crow::SimpleApp app;
 
-    CROW_ROUTE(app, "/")([]()
-                         {
+    CROW_ROUTE(app, "/")([](){
         auto load=crow::mustache::load("index.html");
-        return load.render(); });
-
-    CROW_ROUTE(app, "/bookmarks")([](){
-        crow::json::rvalue json_value=load_bookmarks_data();
-        crow::mustache::context ctx;
-        std::vector<crow::json::wvalue> items;
-        crow::mustache::context item_ctx;
-        if (json_value.t()==crow::json::type::List)
-        {
-            auto arr=json_value.lo();
-            for(const auto& key:arr){
-
-                item_ctx["Title"] = key["title"].s();
-                item_ctx["Url"] = key["url"].s();
-                item_ctx["Tag"] = key["tag"].s();
-                items.push_back(item_ctx);
-            }
-        }
-        ctx["items"] = std::move(items);
-
-        CROW_LOG_INFO << "Items count: " << items.size();
-
-        auto load_page=crow::mustache::load("bookmarks.html");
-        return load_page.render(ctx);
-
+        return load.render(); 
     });
-                                  
-    // return data;
+
+        CROW_ROUTE(app, "/bookmarks")([](){
+            crow::mustache::context ctx = load_bookmarks_data();
+            auto load_page = crow::mustache::load("bookmarks.html");
+            return load_page.render(ctx);
+        });
+
+    CROW_ROUTE(app,"/add").methods(crow::HTTPMethod::GET)([](){
+        auto load_page=crow::mustache::load("add.html");
+        return load_page.render();
+    });
+
+    CROW_ROUTE(app,"/add_data").methods(crow::HTTPMethod::POST)([](const crow::request& req){
+        auto parameters=req.get_body_params();
+        std::string name=parameters.get("name");
+        std::string url=parameters.get("url");
+        std::string tag=parameters.get("tag");
+        auto confirmation=add_bookmarks(name,url,tag);
+        auto load_page=crow::mustache::load("confirmation.html");
+        crow::mustache::context ctx;
+        ctx={{"name",name},{"url",url}};
+        return load_page.render(ctx);
+    });
+
     app.port(80).multithreaded().run();
 }

@@ -74,15 +74,16 @@
 
     <nav>
         <!-- <a href="/bookmarks/">Bookmark List</a> | -->
-        <a href="/bookmarks/add">Add a Bookmark</a>
+        <a href="/add">Add a Bookmark</a>
+        <a href="/">Home</a>
     </nav>
 
     
     <ul class="bookmark-list">
         {{#items}}
         <li>
-            <a href="{{Url}}" target="_blank" rel="noopener noreferrer">{{Title}}</a>
-            <span class="bookmark-tag">{{Tag}}</span>
+            <a href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a>
+            <span class="bookmark-tag">{{tag}}</span>
         </li>
         {{/items}}
     </ul>

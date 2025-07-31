@@ -2,34 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>My Bookmarks</title>
+    <title>Personal Bookmark Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/static/style.css" />
+    <style>
+        body {
+            background: #f5f8fb;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .center-card {
+            max-width: 480px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 28px rgba(30,40,80,0.12);
+            padding: 40px 36px 32px 36px;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 800;
+            color: #25396f;
+            margin-bottom: 6px;
+        }
+        .primary-btn {
+            background: #346beb;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 22px;
+            margin: 18px 0 12px 0;
+            cursor: pointer;
+            transition: 0.15s box-shadow;
+            box-shadow: 0 2px 8px rgba(30,40,80,0.08);
+        }
+        .primary-btn:hover {
+            box-shadow: 0 4px 18px rgba(52,107,235,0.18);
+            background: #2957be;
+        }
+        .muted {
+            color: #697ea5;
+            font-size: 1.05em;
+            margin-bottom: 4px;
+        }
+        .links-row {
+            margin: 28px 0 10px 0;
+        }
+        .info-tip {
+            background: #eaf1fd;
+            color: #466495;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.98em;
+            margin-top: 16px;
+            display: inline-block;
+        }
+        @media (max-width: 620px) {
+            .center-card {
+                padding: 20px 8vw 16px 8vw;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <div class="center-card">
         <h1>Personal Bookmark Manager</h1>
-        <nav>
-            <a href="/bookmarks">Bookmarks List</a> | 
-            <a href="/bookmarks/add">Add Bookmark</a>
-        </nav>
-    </header>
-
-    <main>
-        <h2>Bookmark List</h2>
-        {{#items}}
-        <div class="bookmark-item">
-            <a href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a>
-            <span class="tag">[{{tag}}]</span>
+        <div class="muted">All your favorite links, all in one place.</div>
+        <button class="primary-btn" onclick="window.location='/add'">➕ Add a Bookmark</button>
+        <div class="links-row">
+            <a href="/bookmarks" style="margin-right:24px;">View saved bookmarks</a>
         </div>
-        {{/items}}
 
-        {{^items}}
-        <p>No bookmarks yet. Go add one!</p>
-        {{/items}}
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 Personal Bookmark Manager</p>
-    </footer>
+        <div class="info-tip">
+            <strong>Get started: </strong>No bookmarks yet. Click "Add a Bookmark" to create your first one!
+        </div>
+    </div>
 </body>
 </html>
