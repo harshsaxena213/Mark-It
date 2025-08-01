@@ -1,6 +1,6 @@
-# Personal_BookMark_Manager
+# Mark-It
 
-A **Personal Bookmark Manager** that lets you save, organize, and access your web bookmarks securely, using a C++ backend and a web-based interface.
+A **Mark-It** that lets you save, organize, and access your web bookmarks securely, using a C++ backend and a web-based interface.
 
 ---
 
@@ -72,7 +72,7 @@ Make sure all dependencies (Crow, ASIO) are properly included in the include pat
 Execute the compiled binary:
 
 
-Open your web browser and navigate to the address and port specified in `main.cpp` (usually `http://localhost:80` or similar) to access the bookmark manager.
+Open your web browser and navigate to the address and port specified in `main.cpp` (usually `http://localhost:80` or similar) to access the Mark-It.
 
 ## Contribution
 
