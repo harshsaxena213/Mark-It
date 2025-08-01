@@ -38,8 +38,8 @@ A **Personal Bookmark Manager** that lets you save, organize, and access your we
 ### 1. Clone the repository
 
     
-      git clone https://github.com/harshsaxena213/Personal_BookMark_Manager
-      cd Personal_BookMark_Manager
+      git clone https://github.com/harshsaxena213/Mark-It.git
+      cd Mark-It
     
 
 
